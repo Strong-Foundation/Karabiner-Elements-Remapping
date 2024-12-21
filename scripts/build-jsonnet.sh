@@ -1,31 +1,36 @@
 #!/bin/bash
 
 # This script is used to compile a Jsonnet configuration file into a JSON file
-# for use with Karabiner-Elements. It assumes that Jsonnet and jsonnetfmt are installed on
+# for use with Karabiner-Elements. It assumes that Jsonnet and jsonnet-lint are installed on
 # your system and that the script is run from the repository's root directory.
 
 # Exit on any error
 set -e
 
-# Output file path where the compiled JSON will be saved
+# Default output file path where the compiled JSON will be saved
 OUTPUT_FILE="config/windows-keyboard.json"
 
-# Jsonnet source file (specific file to compile)
-JSONNET_FILE="jsonnet/windows-mac-remap.jsonnet" # Replace with your Jsonnet file
+# Default Jsonnet source file (specific file to compile)
+JSONNET_FILE="jsonnet/windows-mac-remap.jsonnet"
 
 # Check if Jsonnet is installed
-if ! command -v jsonnet &>/dev/null; then
+if [ ! -x "$(command -v jsonnet)" ]; then
     echo "Error: Jsonnet is not installed. Please install Jsonnet and try again."
     exit 1
+else
+    jsonnet_version=$(jsonnet --version)
+    echo "Jsonnet version: $jsonnet_version"
 fi
 
-# Check if jsonnetfmt is installed
-if ! command -v jsonnetfmt &>/dev/null; then
-    echo "Warning: jsonnetfmt is not installed. You can format your Jsonnet files later manually."
+# Check if jsonnet-lint is installed
+if [ ! -x "$(command -v jsonnet-lint)" ]; then
+    echo "Warning: jsonnet-lint is not installed."
+    exit 1
 else
-    echo "jsonnetfmt is installed. Formatting Jsonnet file..."
+    jsonnet_lint_version=$(jsonnet-lint --version)
+    echo "jsonnet-lint version: $jsonnet_lint_version"
     # Format the Jsonnet file (optional step)
-    jsonnetfmt -i "$JSONNET_FILE"
+    jsonnet-lint "$JSONNET_FILE"
 fi
 
 # Check if the Jsonnet source file exists
