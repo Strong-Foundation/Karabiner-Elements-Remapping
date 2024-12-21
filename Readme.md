@@ -28,7 +28,7 @@ A collection of configuration files, guides, and resources to help users remap t
    karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/main/config/windows-keyboard.json
    ```
 
-2. This will launch Karabiner-Elements and directly import the configuration.
+2. This will launch Karabiner-Elements and directly import the `windows-keyboard.json` configuration file into your local system.
 3. Navigate to the **Complex Modifications** tab within Karabiner-Elements and enable the imported rule(s).
 
 ---
@@ -45,7 +45,7 @@ Karabiner-Elements-Remapping/
 ├── License.md            # License for the repository
 ├── Readme.md             # Overview and setup instructions
 ├── config/               # Compiled JSON configuration files
-│   └── windows-keyboard.json
+│   └── windows-keyboard.json  # The file Karabiner-Elements will import to the local system
 ├── jsonnet/              # JSONNET files for custom configurations
 │   └── windows-mac-remap.jsonnet
 └── scripts/              # Helper scripts
