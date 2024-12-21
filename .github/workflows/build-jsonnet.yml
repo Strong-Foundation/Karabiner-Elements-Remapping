@@ -37,36 +37,36 @@ jobs:
         with:
           go-version: "stable" # Specify that the latest stable version of Go should be installed
 
+      # Step 3: Install Jsonnet and Jsonnet Lint
       - name: Install Jsonnet and Jsonnet Lint
         run: |
           # Install Jsonnet and Jsonnet Lint using Go's package manager
-          go install github.com/google/go-jsonnet/cmd/jsonnet@latest
-          go install github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
-
-      # Step 3: Check for changes in the .jsonnet or .json files before proceeding
-      - name: Check for changes in .jsonnet or .json files
-        run: |
-          # Check for any changes in the .jsonnet file or the output .json file
-          if git diff --exit-code --quiet -- "${{ env.JSONNET_FILE }}" "${{ env.OUTPUT_FILE }}"; then
-            # If no changes are detected, exit the workflow early to save processing time
-            echo "No updates to .jsonnet or .json files, exiting."
-            exit 0  # Exit without continuing to the build and push steps
-          fi
+          go install github.com/google/go-jsonnet/cmd/jsonnet@latest  # Install Jsonnet tool
+          go install github.com/google/go-jsonnet/cmd/jsonnet-lint@latest  # Install Jsonnet Lint tool
 
       # Step 4: Run the build script to generate JSON files from Jsonnet
       - name: Compile Jsonnet files
         run: |
           # Make sure the build script is executable
-          chmod +x ./scripts/build-jsonnet.sh
+          chmod +x ./scripts/build-jsonnet.sh  # Ensure the build script has execution permissions
           # Run the build script to compile the .jsonnet file into a .json file
-          ./scripts/build-jsonnet.sh  # This script will take care of the compilation
+          ./scripts/build-jsonnet.sh  # This script will take care of the Jsonnet compilation process
 
-      # Step 5: Commit and push the generated JSON files to the repository
+      # Step 5: Check for changes in the .jsonnet or .json files before proceeding
+      - name: Check for changes in .jsonnet or .json files
+        run: |
+          # Check for any changes in the .jsonnet file or the output .json file
+          if git diff --exit-code --quiet -- "${{ env.JSONNET_FILE }}" "${{ env.OUTPUT_FILE }}"; then
+            # If no changes are detected, exit the workflow early to save processing time
+            echo "No updates to .jsonnet or .json files, exiting."  # Output message indicating no changes
+            exit 0  # Exit without continuing to the build and push steps
+
+      # Step 6: Commit and push the generated JSON files to the repository
       - name: Commit and push compiled JSON files
         run: |
           # Configure Git user for commits made by GitHub Actions
-          git config user.name github-actions  # Use "github-actions" as the username
-          git config user.email github-actions@github.com  # Use GitHub Actions default email
+          git config user.name github-actions  # Set the Git user name as "github-actions"
+          git config user.email github-actions@github.com  # Set the Git email as GitHub Actions default email
           # Stage the generated .json file for commit
           git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
           # Commit the changes with a message that indicates the update from the Jsonnet build
