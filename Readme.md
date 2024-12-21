@@ -1,6 +1,6 @@
 # Karabiner-Elements-Remapping
 
-A collection of configuration files, guides, and resources to help users remap their keyboards using [Karabiner-Elements](https://karabiner-elements.pqrs.org/) on macOS. Perfect for customizing layouts, adapting Windows keyboards, or creating workflows tailored to your needs.
+A collection of configuration files, guides, and resources to help users remap their keyboards using [Karabiner-Elements](https://karabiner-elements.pqrs.org/) on macOS.
 
 ---
 
@@ -22,17 +22,12 @@ A collection of configuration files, guides, and resources to help users remap t
 
 ### Step 2: Add Configuration Files
 
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/Strong-Foundation/Karabiner-Elements-Remapping.git
-   ```
-2. Navigate to the `config/` folder and copy the desired `.json` file to:
+Simply open the following URL in your browser to import the configuration directly into Karabiner-Elements:
 
-   ```bash
-   ~/.config/karabiner/
-   ```
+[karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json](karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json)
 
-3. Open Karabiner-Elements, go to the **Complex Modifications** tab, and enable the rules you’ve added.
+1. This will open Karabiner-Elements and automatically import the configuration.
+2. Go to the **Complex Modifications** tab in Karabiner-Elements and enable the imported rule(s).
 
 ---
 
@@ -43,60 +38,18 @@ Karabiner-Elements-Remapping/
 │
 ├── README.md             # Overview and setup instructions
 ├── LICENSE               # License for the repository
-├── config/
-│   ├── windows-keyboard.json       # Remap Windows keyboard for macOS
-│   ├── custom-layout.json          # Example custom layout
-│   └── advanced-workflows.json     # Advanced remapping example
-├── docs/
-│   ├── setup-guide.md              # Step-by-step guide for beginners
-│   ├── customization-tips.md       # How to create your own mappings
-│   └── troubleshooting.md          # Common issues and fixes
-├── resources/
-│   ├── images/                     # Screenshots and diagrams
-│   └── scripts/                    # Optional helper scripts
-└── .gitignore
+├── config/               # Compiled JSON files
+│   └── windows-keyboard.json
+├── scripts/              # Helper scripts
+│   └── build-jsonnet.sh
+└── .gitignore            # Ignored files
 ```
-
----
-
-## 🔧 Example Configurations
-
-### 1. **Windows Keyboard Layout for macOS**
-
-The `windows-keyboard.json` remaps:
-
-- `Ctrl` -> `Command`
-- `Alt` -> `Option`
-- `Windows Key` -> `Command`
-- `Caps Lock` -> `Esc` (dual-role: `Ctrl` when held)
-
-### 2. **Custom Layout**
-
-Define your own mappings in `custom-layout.json`. Example:
-
-- Swap `Esc` and `Caps Lock`.
-- Use `Right Shift` as a trigger for app-specific shortcuts.
-
-### 3. **Advanced Workflows**
-
-The `advanced-workflows.json` includes:
-
-- Dual-role keys (e.g., `Shift` for uppercase and `Shift+Caps Lock` for language switching).
-- App-specific remaps (e.g., different shortcuts for VSCode vs. Safari).
-
----
-
-## 📖 Documentation
-
-- **[Setup Guide](docs/setup-guide.md)**: A beginner-friendly walkthrough.
-- **[Customization Tips](docs/customization-tips.md)**: Learn to write your own rules.
-- **[Troubleshooting](docs/troubleshooting.md)**: Fix common issues.
 
 ---
 
 ## 💡 Contribution
 
-We welcome contributions! If you have a custom mapping or a useful configuration, feel free to submit a pull request or open an issue.
+We welcome contributions! If you have a custom mapping, feel free to submit a pull request or open an issue.
 
 ### How to Contribute
 
