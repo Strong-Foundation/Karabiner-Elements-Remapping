@@ -1,98 +1,143 @@
+// Define the key configuration object, which holds several methods for configuring key mappings
 local keyConfig = {
+
+  // Define a rule for setting up key remappings
   rule(description, input, output, condition=null):: {
+    // Rule description (human-readable explanation)
     description: description,
+
+    // Define a list of manipulators to map input to output
     manipulators: [
       {
+        // Mapping from the input key(s)
         from: input,
       } + {
+        // Mapping to the output key(s)
+        // We check if the output is an array. If it's not, we turn it into one to handle both cases
         [o.to_type]: [o.output]
         for o in if std.isArray(output) then output else [output] + []
       } + {
+        // If a condition is provided, include it in the manipulator
         [if condition != null then 'conditions']: [
           condition,
         ],
+        // Type of the manipulator (basic in this case)
         type: 'basic',
       },
     ],
   },
 
+  // Define an input mapping configuration
   input(key, modifiers=null, key_is_modifier=false):: {
+    // The main key code for the input
     key_code: key,
+
+    // If the key is not a modifier, we add modifiers to the configuration
+    // If key_is_modifier is true, we set modifiers to null
     [if key_is_modifier then null else 'modifiers']: {
+      // Mandatory modifiers, if any are provided
       [if modifiers != null then 'mandatory']: modifiers,
+
+      // Optional modifiers (e.g., 'any' for optional key modifiers)
       optional: ['any'],
     },
   },
 
+  // Define an output mapping for the key configuration
   outputKey(key, modifiers=null, output_type='to', key_code='key_code'):: {
+    // The output type (whether it's a direct mapping or another type)
     to_type: output_type,
+
+    // The output itself, which maps key codes and their modifiers
     output: {
       [key_code]: key,
+      // If modifiers are provided, we include them in the output
       [if modifiers != null then 'modifiers']: modifiers,
     },
   },
 
+  // Define an output mapping for shell commands
   outputShell(command):: {
+    // The output type is 'to', indicating it's a direct output
     to_type: 'to',
+
+    // The output is a shell command to be executed
     output: {
       shell_command: command,
     },
   },
 
+  // Define a condition to apply to a key rule
   condition(type, bundles, file_paths=null):: {
+    // Define the type of condition (e.g., frontmost application)
     type: 'frontmost_application_' + type,
+
+    // List of bundles to match for this condition
     bundle_identifiers: bundles,
+
+    // If file paths are provided, include them in the condition
     [if file_paths != null then 'file_paths']: file_paths,
   },
 
+  // Define a function to run a docked application (for macOS users)
   runDockedApp(number):: {
+    // Output type is 'to', indicating it's a direct output
     to_type: 'to',
+
+    // The output is a shell command to open the specified docked app based on its index number
     output: {
       shell_command: "open -b $(/usr/libexec/PlistBuddy -c 'print :persistent-apps:" + number + ":tile-data:bundle-identifier' ~/Library/Preferences/com.apple.dock.plist)",
     },
   },
 };
 
-
+// Define a set of bundles based on different categories
 local bundle = {
+
+  // Hypervisors (used for virtualization apps like VirtualBox, Parallels, etc.)
   hypervisors: [
-    '^org\\.virtualbox\\.app\\.VirtualBoxVM$',
-    '^com\\.parallels\\.desktop\\.console$',
-    '^org\\.vmware\\.fusion$',
+    '^org\\.virtualbox\\.app\\.VirtualBoxVM$',  // VirtualBox
+    '^com\\.parallels\\.desktop\\.console$',  // Parallels Desktop
+    '^org\\.vmware\\.fusion$',  // VMware Fusion
   ],
 
+  // IDEs (used for integrated development environments)
   ides: [
-    '^org\\.gnu\\.emacs$',
-    '^org\\.gnu\\.Emacs$',
-    '^com\\.jetbrains',
-    '^com\\.microsoft\\.VSCode$',
-    '^com\\.vscodium$',
-    '^com\\.sublimetext\\.3$',
-    '^net\\.kovidgoyal\\.kitty$',
+    '^org\\.gnu\\.emacs$',  // Emacs
+    '^org\\.gnu\\.Emacs$',  // Another Emacs variant
+    '^com\\.jetbrains',  // JetBrains products
+    '^com\\.microsoft\\.VSCode$',  // Visual Studio Code
+    '^com\\.vscodium$',  // VSCodium
+    '^com\\.sublimetext\\.3$',  // Sublime Text
+    '^net\\.kovidgoyal\\.kitty$',  // Kitty terminal emulator
   ],
 
+  // Remote desktop applications (used for accessing other computers)
   remoteDesktops: [
-    '^com\\.citrix\\.XenAppViewer$',
-    '^com\\.microsoft\\.rdc\\.macos$',
+    '^com\\.citrix\\.XenAppViewer$',  // Citrix XenApp
+    '^com\\.microsoft\\.rdc\\.macos$',  // Microsoft Remote Desktop for macOS
   ],
 
+  // Terminal emulators (used for accessing command-line environments)
   terminalEmulators: [
-    '^com\\.alacritty$',
-    '^co\\.zeit\\.hyper$',
-    '^com\\.googlecode\\.iterm2$',
-    '^com\\.apple\\.Terminal$',
-    '^com\\.github\\.wez\\.wezterm$',
+    '^com\\.alacritty$',  // Alacritty terminal
+    '^co\\.zeit\\.hyper$',  // Hyper terminal
+    '^com\\.googlecode\\.iterm2$',  // iTerm2 terminal
+    '^com\\.apple\\.Terminal$',  // macOS Terminal
+    '^com\\.github\\.wez\\.wezterm$',  // WezTerm terminal
   ],
 
+  // Web browsers (used for web browsing applications)
   webBrowsers: [
-    '^com\\.google\\.chrome$',
-    '^com\\.google\\.Chrome$',
-    '^org\\.mozilla\\.firefox$',
-    '^org\\.mozilla\\.nightly$',
-    '^com\\.brave\\.Browser$',
-    '^com\\.apple\\.Safari$',
+    '^com\\.google\\.chrome$',  // Google Chrome
+    '^com\\.google\\.Chrome$',  // Google Chrome (alternative identifier)
+    '^org\\.mozilla\\.firefox$',  // Mozilla Firefox
+    '^org\\.mozilla\\.nightly$',  // Firefox Nightly
+    '^com\\.brave\\.Browser$',  // Brave browser
+    '^com\\.apple\\.Safari$',  // Safari browser
   ],
 
+  // A combined list of all the bundles
   standard:
     $.hypervisors +
     $.ides +
@@ -101,11 +146,15 @@ local bundle = {
     [],
 };
 
+// Define file paths that are associated with certain bundle categories
 local file_paths = {
+
+  // File paths for remote desktop applications
   remoteDesktops: [
-    'Chrome Remote Desktop\\.app',
+    'Chrome Remote Desktop\\.app',  // Chrome Remote Desktop app
   ],
 
+  // A standard file path list, including remote desktops
   standard:
     $.remoteDesktops +
     [],
