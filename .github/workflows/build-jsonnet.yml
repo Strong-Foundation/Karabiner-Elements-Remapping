@@ -60,6 +60,7 @@ jobs:
             # If no changes are detected, exit the workflow early to save processing time
             echo "No updates to .jsonnet or .json files, exiting."  # Output message indicating no changes
             exit 0  # Exit without continuing to the build and push steps
+          fi
 
       # Step 6: Commit and push the generated JSON files to the repository
       - name: Commit and push compiled JSON files
