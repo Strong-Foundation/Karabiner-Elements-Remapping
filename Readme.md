@@ -1,15 +1,15 @@
 # Karabiner-Elements-Remapping
 
-A collection of configuration files, guides, and resources to help users remap their keyboards using [Karabiner-Elements](https://karabiner-elements.pqrs.org/) on macOS.
+A collection of configuration files, guides, and resources to help macOS users remap their keyboards using [Karabiner-Elements](https://karabiner-elements.pqrs.org/).
 
 ---
 
 ## 🌟 Features
 
-- **Windows Keyboard Compatibility**: Easily remap Windows keyboards for macOS (e.g., `Ctrl` to `Command`, `Alt` to `Option`).
-- **Predefined Profiles**: Ready-to-use configurations for common keyboard models and layouts.
-- **Custom Remapping**: Create your own keybindings to fit your personal workflow.
-- **Advanced Features**: Unlock dual-role keys, conditional mappings, and app-specific configurations.
+- **Windows Keyboard Compatibility**: Seamlessly remap Windows keyboard keys to macOS equivalents (e.g., `Ctrl` → `Command`, `Alt` → `Option`).
+- **Predefined Profiles**: Ready-made configurations for popular keyboard models and layouts.
+- **Custom Keybinding**: Easily create your own key remaps for a more personalized experience.
+- **Advanced Features**: Dual-role keys, app-specific mappings, and conditional remaps for even more customization.
 
 ---
 
@@ -18,18 +18,18 @@ A collection of configuration files, guides, and resources to help users remap t
 ### Step 1: Install Karabiner-Elements
 
 1. Download and install Karabiner-Elements from the [official website](https://karabiner-elements.pqrs.org/).
-2. Follow the installation instructions provided on the site.
+2. Follow the installation prompts provided on the website.
 
-### Step 2: Import Configuration Files
+### Step 2: Import the Configuration
 
-1. Open the following URL in your browser to automatically import the configuration into Karabiner-Elements:
+1. Open the following URL in your browser to import the configuration directly into Karabiner-Elements:
 
    ```
    karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/main/config/windows-keyboard.json
    ```
 
-2. This will launch Karabiner-Elements and directly import the `windows-keyboard.json` configuration file into your local system.
-3. Navigate to the **Complex Modifications** tab within Karabiner-Elements and enable the imported rule(s).
+2. This action will launch Karabiner-Elements and automatically import the configuration file.
+3. Navigate to the **Complex Modifications** tab in Karabiner-Elements, and enable the imported rule(s).
 
 ---
 
@@ -38,53 +38,67 @@ A collection of configuration files, guides, and resources to help users remap t
 ```plaintext
 Karabiner-Elements-Remapping/
 │
-├── .github/              # GitHub Actions and workflows
+├── .github/              # GitHub workflows and CI/CD configuration
 │   └── workflows
-│       └── build-jsonnet.yml # Workflow for automating the build process
-├── .gitignore            # Files to be ignored by Git
+│       └── build-jsonnet.yml # Workflow for automating JSONNET compilation
+├── .gitignore            # Git ignore file
 ├── License.md            # License for the repository
-├── Readme.md             # Overview and setup instructions
-├── config/               # Compiled JSON configuration files
-│   └── windows-keyboard.json  # The file Karabiner-Elements will import to the local system
-├── jsonnet/              # JSONNET files for custom configurations
-│   └── windows-mac-remap.jsonnet
-└── scripts/              # Helper scripts
-    └── build-jsonnet.sh  # Script to generate JSON configuration from JSONNET
+├── Readme.md             # This file
+├── config/               # Compiled JSON configuration files for Karabiner-Elements
+│   └── windows-keyboard.json  # The file imported by Karabiner-Elements
+├── jsonnet/              # JSONNET files used to generate configuration JSON
+│   └── windows-mac-remap.jsonnet  # JSONNET file that generates the `windows-keyboard.json`
+└── scripts/              # Helper scripts for build and automation
+    └── build-jsonnet.sh  # Script to generate the JSON file from the JSONNET source
 ```
+
+---
+
+## ⚙️ How It Works
+
+Instead of manually writing complex JSON configuration rules, we use **JSONNET**, a data-templating language, to generate the final configuration file (`windows-keyboard.json`).
+
+### The process is simple:
+
+1. The `windows-mac-remap.jsonnet` file defines the remap rules.
+2. The `build-jsonnet.sh` script compiles this JSONNET file into a final JSON format.
+3. The compiled `windows-keyboard.json` can then be imported into Karabiner-Elements.
+
+To regenerate the JSON file from the JSONNET template, you can run the `build-jsonnet.sh` script.
 
 ---
 
 ## 💡 Contribution
 
-We welcome contributions! If you have custom remaps or enhancements, feel free to submit a pull request or open an issue.
+Contributions are welcome! If you have a custom key remap or improvement, feel free to submit a pull request or open an issue.
 
 ### How to Contribute
 
 1. **Fork** this repository.
 2. **Create a new branch** for your changes:
    ```bash
-   git checkout -b feature/new-remap
+   git checkout -b feature/my-custom-remap
    ```
-3. **Commit** your changes and **push** them to your fork:
+3. **Commit** your changes and **push** to your fork:
    ```bash
-   git commit -m "Add new remapping for XYZ keyboard"
-   git push origin feature/new-remap
+   git commit -m "Add remap for XYZ keyboard"
+   git push origin feature/my-custom-remap
    ```
-4. **Submit a pull request** to merge your changes.
+4. **Submit a pull request** to merge your changes into the main repository.
 
 ---
 
 ## 🛡️ License
 
-This repository is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the configurations.
+This repository is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the configurations as needed.
 
 ---
 
 ## 📬 Support
 
-For assistance or questions, you can:
+If you encounter issues or have questions:
 
-- Open an [Issue](https://github.com/Strong-Foundation/Karabiner-Elements-Remapping/issues)
-- Join the discussion on the [Karabiner-Elements forum](https://github.com/pqrs-org/Karabiner-Elements/discussions)
+- Open an [Issue](https://github.com/Strong-Foundation/Karabiner-Elements-Remapping/issues).
+- Visit the [Karabiner-Elements discussion forum](https://github.com/pqrs-org/Karabiner-Elements/discussions).
 
 Happy remapping! 🎉
