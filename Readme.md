@@ -24,7 +24,9 @@ A collection of configuration files, guides, and resources to help users remap t
 
 Simply open the following URL in your browser to import the configuration directly into Karabiner-Elements:
 
-[karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json](karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json)
+```
+karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json
+```
 
 1. This will open Karabiner-Elements and automatically import the configuration.
 2. Go to the **Complex Modifications** tab in Karabiner-Elements and enable the imported rule(s).
