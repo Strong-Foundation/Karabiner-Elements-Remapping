@@ -64,6 +64,9 @@ jobs:
       # Step 5: Commit and push the generated JSON files to the repository
       - name: Commit and push compiled JSON files
         run: |
+          # Configure Git user for commits made by GitHub Actions
+          git config user.name github-actions  # Use "github-actions" as the username
+          git config user.email github-actions@github.com  # Use GitHub Actions default email
           # Stage the generated .json file for commit
           git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
           # Commit the changes with a message that indicates the update from the Jsonnet build
