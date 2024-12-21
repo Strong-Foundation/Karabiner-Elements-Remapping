@@ -1,21 +1,4 @@
-//---------//
-// FUNCTIONS //
-//---------//
-
 local keyConfig = {
-  // rule
-  //
-  // description (string, required)
-  //   description of a rule, should be '<key> (<modifier1>+...+<modifierN>) [<specialNotes>]'
-  //
-  // input (object, required)
-  //   input object for a rule; use input()
-  //
-  // output (object or array, required)
-  //   output object for a rule; use outputKey() or outputShell()
-  //
-  // condition (object, optional)
-  //   condition for a trigger; use condition()
   rule(description, input, output, condition=null):: {
     description: description,
     manipulators: [
@@ -33,16 +16,6 @@ local keyConfig = {
     ],
   },
 
-  // input
-  //
-  // key (string, required)
-  //   key that will trigger a rule
-  //
-  // modifiers (array, optional)
-  //   modifiers that, when combined with <key>, trigger a rule
-  //
-  // key_is_modifier (boolean, optional)
-  //   removes entire 'modifiers' object; only use when <key> is a modifier itself
   input(key, modifiers=null, key_is_modifier=false):: {
     key_code: key,
     [if key_is_modifier then null else 'modifiers']: {
@@ -51,19 +24,6 @@ local keyConfig = {
     },
   },
 
-  // outputKey
-  //
-  // key (string, required)
-  //   key to output when a rule is triggered
-  //
-  // modifiers (array, optional)
-  //   modifiers to add to the key when a rule is triggered
-  //
-  // output_type (string, optional)
-  //   type of 'to' object; should normally be left alone
-  //
-  // key_code (string, optional)
-  //   type of output key code; change the default value for non-typical keys, e.g. media keys
   outputKey(key, modifiers=null, output_type='to', key_code='key_code'):: {
     to_type: output_type,
     output: {
@@ -72,10 +32,6 @@ local keyConfig = {
     },
   },
 
-  // outputShell
-  //
-  // command (string, required)
-  //   the command to run when a rule is triggered
   outputShell(command):: {
     to_type: 'to',
     output: {
@@ -83,28 +39,12 @@ local keyConfig = {
     },
   },
 
-  // condition
-  //
-  // type (string, required)
-  //   the 'frontmost_application' type to use. common values are 'if' or 'unless'
-  //
-  // bundles (array, required)
-  //   bundle identifiers of applications
-  //
-  // file_paths (array, optional)
-  //   file path identifiers of applications
   condition(type, bundles, file_paths=null):: {
     type: 'frontmost_application_' + type,
     bundle_identifiers: bundles,
     [if file_paths != null then 'file_paths']: file_paths,
   },
 
-  // runDockedApp
-  //
-  // number (string, required)
-  //   the number of the docked app to run (zero-indexed)
-  //   note that the list of apps does not include Finder, which is permanently
-  //   pinned to the dock as the first item
   runDockedApp(number):: {
     to_type: 'to',
     output: {
@@ -113,110 +53,63 @@ local keyConfig = {
   },
 };
 
-//---------//
-// BUNDLE  //
-//---------//
 
 local bundle = {
-  //--------------------//
-  // BUNDLE IDENTIFIERS //
-  //--------------------//
-
-  // bundle identifiers for hypervisor applications
   hypervisors: [
-    // Oracle VirtualBox
     '^org\\.virtualbox\\.app\\.VirtualBoxVM$',
-    // Parallels
     '^com\\.parallels\\.desktop\\.console$',
-    // VMWare Fusion
     '^org\\.vmware\\.fusion$',
   ],
 
-  // bundle identifiers for IDE applications
   ides: [
-    // GNU Emacs (GUI)
     '^org\\.gnu\\.emacs$',
     '^org\\.gnu\\.Emacs$',
-    // JetBrains tools
     '^com\\.jetbrains',
-    // Microsoft VSCode
     '^com\\.microsoft\\.VSCode$',
-    // VSCodium - Open Source VSCode
     '^com\\.vscodium$',
-    // Sublime Text
     '^com\\.sublimetext\\.3$',
-    // Kitty
     '^net\\.kovidgoyal\\.kitty$',
   ],
 
-  // bundle identifiers for remote desktop applications
   remoteDesktops: [
-    // Citrix XenAppViewer
     '^com\\.citrix\\.XenAppViewer$',
-    // Microsoft Remote Desktop Connection
     '^com\\.microsoft\\.rdc\\.macos$',
   ],
 
-  // bundle identifiers for terminal emulator applications
   terminalEmulators: [
-    // Alacritty
     '^com\\.alacritty$',
-    // Hyper
     '^co\\.zeit\\.hyper$',
-    // iTerm2
     '^com\\.googlecode\\.iterm2$',
-    // Terminal
     '^com\\.apple\\.Terminal$',
-    // WezTerm
     '^com\\.github\\.wez\\.wezterm$',
   ],
 
-  // bundle identifiers for web browser applications
   webBrowsers: [
-    // Google Chrome
     '^com\\.google\\.chrome$',
     '^com\\.google\\.Chrome$',
-    // Mozilla Firefox
     '^org\\.mozilla\\.firefox$',
     '^org\\.mozilla\\.nightly$',
-    // Brave Browser
     '^com\\.brave\\.Browser$',
-    // Safari
     '^com\\.apple\\.Safari$',
   ],
 
-  // since this combination is used so much, it's given its own identifier
   standard:
     $.hypervisors +
     $.ides +
     $.remoteDesktops +
     $.terminalEmulators +
-    [],  // unnecessary, but it allows the '$.foo +'-style for the preceeding lines, which makes my OCD happy
+    [],
 };
-//---------//
-// FILE PATHS //
-//---------//
 
 local file_paths = {
-  //-----------------------//
-  // FILE PATH IDENTIFIERS //
-  //-----------------------//
-
-  // file path identifiers for remote desktop applications
   remoteDesktops: [
-    // Chrome Remote desktop
     'Chrome Remote Desktop\\.app',
   ],
 
-  // since this combination is used so much, it's given its own identifier
   standard:
     $.remoteDesktops +
-    [],  // unnecessary, but it allows the '$.foo +'-style for the preceeding lines, which makes my OCD happy
+    [],
 };
-
-//------//
-// MAIN //
-//------//
 
 {
   title: 'Windows Shortcuts',
