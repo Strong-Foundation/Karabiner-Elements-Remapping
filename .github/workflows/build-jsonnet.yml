@@ -1,7 +1,5 @@
-# Name of the workflow
 name: Build and Compile Jsonnet
 
-# Define the events that trigger the workflow
 on:
   push:
     # Trigger the workflow when changes are pushed to any .jsonnet file in the repository
@@ -31,13 +29,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3 # This action checks out the repository's code to the runner's workspace
 
-      # Step 2: Set up the environment and install dependencies (like Jsonnet)
-      - name: Set up Jsonnet
+      # Step 2: Set up Go (using stable version)
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "stable" # Specify that the latest stable version of Go should be installed
+
+      - name: Install Jsonnet and Jsonnet Lint
         run: |
-          # Update the package list to make sure the latest packages are available
-          sudo apt-get update
-          # Install the Jsonnet tool to be able to compile .jsonnet files
-          sudo apt-get install -y jsonnet
+          # Install Jsonnet and Jsonnet Lint using Go's package manager
+          go install github.com/google/go-jsonnet/cmd/jsonnet@latest
+          go install github.com/google/go-jsonnet/cmd/jsonnet-lint@latest
 
       # Step 3: Check for changes in the .jsonnet or .json files before proceeding
       - name: Check for changes in .jsonnet or .json files
