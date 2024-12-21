@@ -3,32 +3,28 @@ name: Build and Compile Jsonnet
 
 # Define the events that trigger the workflow
 on:
-  # Trigger the workflow when changes are pushed to any .jsonnet file in the repository
   push:
+    # Trigger the workflow when changes are pushed to any .jsonnet file in the repository
     paths:
-      # This will trigger the workflow only if any .jsonnet files are modified or added
       - "**.jsonnet" # Trigger only for .jsonnet file changes
 
-  # Trigger the workflow when a pull request modifies any .jsonnet file in the repository
   pull_request:
+    # Trigger the workflow when a pull request modifies any .jsonnet file in the repository
     paths:
-      # This will trigger the workflow if .jsonnet files are modified in a pull request
       - "**.jsonnet" # Trigger only for .jsonnet file changes in pull requests
 
-  # Allow the workflow to be manually triggered from the GitHub UI
   workflow_dispatch:
-    # No extra settings are needed for manual triggering (e.g., "Run workflow" button)
+    # Allow the workflow to be manually triggered from the GitHub UI
+    # (e.g., by clicking the "Run workflow" button). No additional settings needed.
 
 jobs:
   build:
     runs-on: ubuntu-latest # The workflow will run on the latest version of Ubuntu (GitHub-hosted runner)
 
-    # Define environment variables to hold paths to files and directories
+    # Define only the environment variables that are actively used
     env:
-      JSONNET_DIR: "jsonnet" # The directory where the .jsonnet files are located
-      OUTPUT_DIR: "config" # The directory where the compiled .json files will be saved
-      OUTPUT_FILE: "config/windows-keyboard.json" # Output path for the compiled JSON file
       JSONNET_FILE: "jsonnet/windows-mac-remap.jsonnet" # Path to the specific Jsonnet file to compile
+      OUTPUT_FILE: "config/windows-keyboard.json" # Path to the specific output .json file
 
     steps:
       # Step 1: Checkout the repository code so the workflow can access the files
@@ -43,13 +39,13 @@ jobs:
           # Install the Jsonnet tool to be able to compile .jsonnet files
           sudo apt-get install -y jsonnet
 
-      # Step 3: Check for changes in the .jsonnet files before proceeding
-      - name: Check for changes in .jsonnet files
+      # Step 3: Check for changes in the .jsonnet or .json files before proceeding
+      - name: Check for changes in .jsonnet or .json files
         run: |
-          # Check if there are any changes in the specified .jsonnet files
-          if git diff --exit-code --quiet -- "${{ env.JSONNET_FILE }}"; then
+          # Check for any changes in the .jsonnet file or the output .json file
+          if git diff --exit-code --quiet -- "${{ env.JSONNET_FILE }}" "${{ env.OUTPUT_FILE }}"; then
             # If no changes are detected, exit the workflow early to save processing time
-            echo "No updates to .jsonnet files, exiting."
+            echo "No updates to .jsonnet or .json files, exiting."
             exit 0  # Exit without continuing to the build and push steps
           fi
 
@@ -58,14 +54,14 @@ jobs:
         run: |
           # Make sure the build script is executable
           chmod +x ./scripts/build-jsonnet.sh
-          # Run the build script to compile the .jsonnet files into .json files
+          # Run the build script to compile the .jsonnet file into a .json file
           ./scripts/build-jsonnet.sh  # This script will take care of the compilation
 
       # Step 5: Commit and push the generated JSON files to the repository
       - name: Commit and push compiled JSON files
         run: |
-          # Stage the generated .json files for commit
-          git add $OUTPUT_DIR/*.json  # Use the OUTPUT_DIR environment variable to find the .json files
+          # Stage the generated .json file for commit
+          git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
           # Commit the changes with a message that indicates the update from the Jsonnet build
           git commit -m "Build and update JSON files from Jsonnet"
           # Push the committed changes to the repository
