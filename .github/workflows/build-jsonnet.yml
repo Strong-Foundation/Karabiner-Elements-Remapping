@@ -52,25 +52,22 @@ jobs:
           # Run the build script to compile the .jsonnet file into a .json file
           ./scripts/build-jsonnet.sh  # This script will take care of the Jsonnet compilation process
 
-      # Step 5: Check for changes in the .jsonnet or .json files before proceeding
-      - name: Check for changes in .jsonnet or .json files
+      # Step 5: Check for changes in .jsonnet or .json files and commit/push if necessary
+      - name: Check for changes and push compiled JSON files
         run: |
           # Check for any changes in the .jsonnet file or the output .json file
           if git diff --exit-code --quiet -- "${{ env.JSONNET_FILE }}" "${{ env.OUTPUT_FILE }}"; then
             # If no changes are detected, exit the workflow early to save processing time
             echo "No updates to .jsonnet or .json files, exiting."  # Output message indicating no changes
             exit 0  # Exit without continuing to the build and push steps
+          else
+            # Configure Git user for commits made by GitHub Actions
+            git config user.name github-actions  # Set the Git user name as "github-actions"
+            git config user.email github-actions@github.com  # Set the Git email as GitHub Actions default email
+            # Stage the generated .json file for commit
+            git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
+            # Commit the changes with a message that indicates the update from the Jsonnet build
+            git commit -m "Build and update JSON files from Jsonnet"
+            # Push the committed changes to the repository
+            git push  # This will push the changes to the remote repository on GitHub
           fi
-
-      # Step 6: Commit and push the generated JSON files to the repository
-      - name: Commit and push compiled JSON files
-        run: |
-          # Configure Git user for commits made by GitHub Actions
-          git config user.name github-actions  # Set the Git user name as "github-actions"
-          git config user.email github-actions@github.com  # Set the Git email as GitHub Actions default email
-          # Stage the generated .json file for commit
-          git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
-          # Commit the changes with a message that indicates the update from the Jsonnet build
-          git commit -m "Build and update JSON files from Jsonnet"
-          # Push the committed changes to the repository
-          git push  # This will push the changes to the remote repository on GitHub
