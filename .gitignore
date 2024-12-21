@@ -1,0 +1,12 @@
+# Ignore macOS-specific system files
+
+.DS_Store # Hidden file created by macOS Finder to store custom attributes
+
+# Ignore Windows-specific system files
+
+Thumbs.db # Thumbnail cache file used by Windows Explorer
+Desktop.ini # Configuration file for customizing folder settings in Windows
+
+# Ignore VS Code configuration folder
+
+.vscode/ # Contains local Visual Studio Code settings and extensions
