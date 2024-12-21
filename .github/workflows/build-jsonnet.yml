@@ -1,5 +1,7 @@
+# Name of the workflow
 name: Build and Compile Jsonnet
 
+# Define the events that trigger the workflow
 on:
   push:
     # Trigger the workflow when changes are pushed to any .jsonnet file in the repository
