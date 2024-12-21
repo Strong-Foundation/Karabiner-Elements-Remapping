@@ -1,117 +1,74 @@
-//---------//
-// FUNCTIONS //
-//---------//
-
+-- Define a local table named 'keyConfig' that contains functions and configurations for key mapping.
 local keyConfig = {
-  // rule
-  //
-  // description (string, required)
-  //   description of a rule, should be '<key> (<modifier1>+...+<modifierN>) [<specialNotes>]'
-  //
-  // input (object, required)
-  //   input object for a rule; use input()
-  //
-  // output (object or array, required)
-  //   output object for a rule; use outputKey() or outputShell()
-  //
-  // condition (object, optional)
-  //   condition for a trigger; use condition()
+
+  -- Define a function 'rule' to create a key mapping rule.
+  -- Takes a description of the rule, input trigger, output action, and an optional condition.
   rule(description, input, output, condition=null):: {
-    description: description,
-    manipulators: [
+    description: description,  -- The human-readable description of the rule.
+    manipulators: [  -- Array of objects defining how the key should be manipulated.
       {
-        from: input,
+        from: input,  -- Specifies the input trigger for the rule, using the 'input' object.
       } + {
+        -- Maps each output type to its corresponding output definition.
         [o.to_type]: [o.output]
-        for o in if std.isArray(output) then output else [output] + []
+        for o in if std.isArray(output) then output else [output] + []  -- Ensures that 'output' is processed as an array.
       } + {
-        [if condition != null then 'conditions']: [
-          condition,
+        [if condition != null then 'conditions']: [  -- Includes conditions only if they are provided.
+          condition,  -- Adds the specified condition to the conditions array.
         ],
-        type: 'basic',
+        type: 'basic',  -- Specifies the rule type; default is 'basic'.
       },
     ],
   },
 
-  // input
-  //
-  // key (string, required)
-  //   key that will trigger a rule
-  //
-  // modifiers (array, optional)
-  //   modifiers that, when combined with <key>, trigger a rule
-  //
-  // key_is_modifier (boolean, optional)
-  //   removes entire 'modifiers' object; only use when <key> is a modifier itself
+  -- Define a function 'input' to configure the input trigger for a rule.
+  -- Takes the key to trigger, optional modifiers, and an optional flag if the key itself is a modifier.
   input(key, modifiers=null, key_is_modifier=false):: {
-    key_code: key,
-    [if key_is_modifier then null else 'modifiers']: {
-      [if modifiers != null then 'mandatory']: modifiers,
-      optional: ['any'],
+    key_code: key,  -- Specifies the key that will trigger the rule.
+    [if key_is_modifier then null else 'modifiers']: {  -- Adds modifiers unless the key is a modifier itself.
+      [if modifiers != null then 'mandatory']: modifiers,  -- Adds mandatory modifiers if provided.
+      optional: ['any'],  -- Allows any optional modifiers by default.
     },
   },
 
-  // outputKey
-  //
-  // key (string, required)
-  //   key to output when a rule is triggered
-  //
-  // modifiers (array, optional)
-  //   modifiers to add to the key when a rule is triggered
-  //
-  // output_type (string, optional)
-  //   type of 'to' object; should normally be left alone
-  //
-  // key_code (string, optional)
-  //   type of output key code; change the default value for non-typical keys, e.g. media keys
+  -- Define a function 'outputKey' to specify the key output when a rule is triggered.
+  -- Takes the output key, optional modifiers, output type, and an optional key code type.
   outputKey(key, modifiers=null, output_type='to', key_code='key_code'):: {
-    to_type: output_type,
-    output: {
-      [key_code]: key,
-      [if modifiers != null then 'modifiers']: modifiers,
+    to_type: output_type,  -- Specifies the type of output object (default is 'to').
+    output: {  -- Configures the output key properties.
+      [key_code]: key,  -- Sets the key to output when the rule is triggered.
+      [if modifiers != null then 'modifiers']: modifiers,  -- Adds modifiers to the output if provided.
     },
   },
 
-  // outputShell
-  //
-  // command (string, required)
-  //   the command to run when a rule is triggered
+  -- Define a function 'outputShell' to specify a shell command as the output for a rule.
+  -- Takes the shell command to execute.
   outputShell(command):: {
-    to_type: 'to',
-    output: {
-      shell_command: command,
+    to_type: 'to',  -- Specifies the type of output object as 'to'.
+    output: {  -- Configures the shell command to execute when the rule is triggered.
+      shell_command: command,  -- Sets the shell command to run.
     },
   },
 
-  // condition
-  //
-  // type (string, required)
-  //   the 'frontmost_application' type to use. common values are 'if' or 'unless'
-  //
-  // bundles (array, required)
-  //   bundle identifiers of applications
-  //
-  // file_paths (array, optional)
-  //   file path identifiers of applications
+  -- Define a function 'condition' to configure a condition for triggering a rule.
+  -- Takes a condition type, an array of bundle identifiers, and optional file paths.
   condition(type, bundles, file_paths=null):: {
-    type: 'frontmost_application_' + type,
-    bundle_identifiers: bundles,
-    [if file_paths != null then 'file_paths']: file_paths,
+    type: 'frontmost_application_' + type,  -- Constructs the condition type, e.g., 'frontmost_application_if' or 'unless'.
+    bundle_identifiers: bundles,  -- Specifies the bundle identifiers of applications for the condition.
+    [if file_paths != null then 'file_paths']: file_paths,  -- Optionally adds file paths if provided.
   },
 
-  // runDockedApp
-  //
-  // number (string, required)
-  //   the number of the docked app to run (zero-indexed)
-  //   note that the list of apps does not include Finder, which is permanently
-  //   pinned to the dock as the first item
+  -- Define a function 'runDockedApp' to run a specific docked application by its index.
+  -- Takes the zero-indexed position of the docked app to run.
   runDockedApp(number):: {
-    to_type: 'to',
-    output: {
+    to_type: 'to',  -- Specifies the type of output object as 'to'.
+    output: {  -- Configures the shell command to launch the docked application.
+      -- Constructs a shell command to open the application based on its position in the dock.
       shell_command: "open -b $(/usr/libexec/PlistBuddy -c 'print :persistent-apps:" + number + ":tile-data:bundle-identifier' ~/Library/Preferences/com.apple.dock.plist)",
     },
   },
 };
+
 
 //---------//
 // BUNDLE  //
