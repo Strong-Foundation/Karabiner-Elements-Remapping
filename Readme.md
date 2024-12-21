@@ -6,10 +6,10 @@ A collection of configuration files, guides, and resources to help users remap t
 
 ## 🌟 Features
 
-- **Windows Keyboard Compatibility**: Seamlessly remap Windows keyboards for macOS (e.g., `Ctrl` to `Command`, `Alt` to `Option`).
+- **Windows Keyboard Compatibility**: Easily remap Windows keyboards for macOS (e.g., `Ctrl` to `Command`, `Alt` to `Option`).
 - **Predefined Profiles**: Ready-to-use configurations for common keyboard models and layouts.
-- **Custom Remapping**: Create your own keybindings to suit your workflow.
-- **Advanced Features**: Explore dual-role keys, conditional mappings, and app-specific configurations.
+- **Custom Remapping**: Create your own keybindings to fit your personal workflow.
+- **Advanced Features**: Unlock dual-role keys, conditional mappings, and app-specific configurations.
 
 ---
 
@@ -20,16 +20,16 @@ A collection of configuration files, guides, and resources to help users remap t
 1. Download and install Karabiner-Elements from the [official website](https://karabiner-elements.pqrs.org/).
 2. Follow the installation instructions provided on the site.
 
-### Step 2: Add Configuration Files
+### Step 2: Import Configuration Files
 
-Simply open the following URL in your browser to import the configuration directly into Karabiner-Elements:
+1. Open the following URL in your browser to automatically import the configuration into Karabiner-Elements:
 
-```
-karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/refs/heads/main/config/windows-keyboard.json
-```
+   ```
+   karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/Strong-Foundation/Karabiner-Elements-Remapping/main/config/windows-keyboard.json
+   ```
 
-1. This will open Karabiner-Elements and automatically import the configuration.
-2. Go to the **Complex Modifications** tab in Karabiner-Elements and enable the imported rule(s).
+2. This will launch Karabiner-Elements and directly import the configuration.
+3. Navigate to the **Complex Modifications** tab within Karabiner-Elements and enable the imported rule(s).
 
 ---
 
@@ -38,46 +38,51 @@ karabiner://karabiner/assets/complex_modifications/import?url=https://raw.github
 ```plaintext
 Karabiner-Elements-Remapping/
 │
-├── README.md             # Overview and setup instructions
-├── LICENSE               # License for the repository
-├── config/               # Compiled JSON files
+├── .github/              # GitHub Actions and workflows
+│   └── workflows
+│       └── build-jsonnet.yml # Workflow for automating the build process
+├── .gitignore            # Files to be ignored by Git
+├── License.md            # License for the repository
+├── Readme.md             # Overview and setup instructions
+├── config/               # Compiled JSON configuration files
 │   └── windows-keyboard.json
-├── scripts/              # Helper scripts
-│   └── build-jsonnet.sh
-└── .gitignore            # Ignored files
+├── jsonnet/              # JSONNET files for custom configurations
+│   └── windows-mac-remap.jsonnet
+└── scripts/              # Helper scripts
+    └── build-jsonnet.sh  # Script to generate JSON configuration from JSONNET
 ```
 
 ---
 
 ## 💡 Contribution
 
-We welcome contributions! If you have a custom mapping, feel free to submit a pull request or open an issue.
+We welcome contributions! If you have custom remaps or enhancements, feel free to submit a pull request or open an issue.
 
 ### How to Contribute
 
-1. Fork this repository.
-2. Create a new branch:
+1. **Fork** this repository.
+2. **Create a new branch** for your changes:
    ```bash
    git checkout -b feature/new-remap
    ```
-3. Commit your changes and push to your fork:
+3. **Commit** your changes and **push** them to your fork:
    ```bash
    git commit -m "Add new remapping for XYZ keyboard"
    git push origin feature/new-remap
    ```
-4. Submit a pull request.
+4. **Submit a pull request** to merge your changes.
 
 ---
 
 ## 🛡️ License
 
-This repository is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the configurations provided here.
+This repository is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the configurations.
 
 ---
 
 ## 📬 Support
 
-If you encounter issues or have questions, feel free to:
+For assistance or questions, you can:
 
 - Open an [Issue](https://github.com/Strong-Foundation/Karabiner-Elements-Remapping/issues)
 - Join the discussion on the [Karabiner-Elements forum](https://github.com/pqrs-org/Karabiner-Elements/discussions)
