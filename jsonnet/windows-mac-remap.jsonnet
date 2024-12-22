@@ -121,6 +121,7 @@ local bundle = {
   // Terminal emulators (used for accessing command-line environments)
   terminalEmulators: [
     '^com\\.alacritty$',  // Alacritty terminal
+    '^io\\.alacritty$',  // Old Alacritty terminal
     '^co\\.zeit\\.hyper$',  // Hyper terminal
     '^com\\.googlecode\\.iterm2$',  // iTerm2 terminal
     '^com\\.apple\\.Terminal$',  // macOS Terminal
