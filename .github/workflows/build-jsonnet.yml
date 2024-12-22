@@ -64,8 +64,9 @@ jobs:
             # Configure Git user for commits made by GitHub Actions
             git config user.name github-actions  # Set the Git user name as "github-actions"
             git config user.email github-actions@github.com  # Set the Git email as GitHub Actions default email
-            # Stage the generated .json file for commit
+            # Stage the .json // .jsonnet file for commit
             git add "${{ env.OUTPUT_FILE }}"  # Stage the specific output .json file
+            git add "${{ env.JSONNET_FILE }}"  # Stage the specific input .jsonnet file
             # Commit the changes with a message that indicates the update from the Jsonnet build
             git commit -m "Build and update JSON files from Jsonnet"
             # Push the committed changes to the repository
