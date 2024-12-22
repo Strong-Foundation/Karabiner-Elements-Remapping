@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # This script is used to compile a Jsonnet configuration file into a JSON file
-# for use with Karabiner-Elements. It assumes that Jsonnet and jsonnet-lint are installed on
-# your system and that the script is run from the repository's root directory.
+# for use with Karabiner-Elements. It assumes that Jsonnet, jsonnet-lint, jsonnetfmt, and jsonnet-deps
+# are installed on your system and that the script is run from the repository's root directory.
 
 # Exit on any error
 set -e
@@ -29,8 +29,30 @@ if [ ! -x "$(command -v jsonnet-lint)" ]; then
 else
     jsonnet_lint_version=$(jsonnet-lint --version)
     echo "jsonnet-lint version: $jsonnet_lint_version"
-    # Format the Jsonnet file (optional step)
+    # Lint the Jsonnet file
     jsonnet-lint "$JSONNET_FILE"
+fi
+
+# Check if jsonnetfmt is installed
+if [ ! -x "$(command -v jsonnetfmt)" ]; then
+    echo "Error: jsonnetfmt is not installed. Please install it and try again."
+    exit 1
+else
+    jsonnetfmt_version=$(jsonnetfmt --version)
+    echo "jsonnetfmt version: $jsonnetfmt_version"
+    # Format the Jsonnet file in place
+    jsonnetfmt -i "$JSONNET_FILE"
+fi
+
+# Check if jsonnet-deps is installed
+if [ ! -x "$(command -v jsonnet-deps)" ]; then
+    echo "Error: jsonnet-deps is not installed. Please install it and try again."
+    exit 1
+else
+    jsonnet_deps_version=$(jsonnet-deps --version)
+    echo "jsonnet-deps version: $jsonnet_deps_version"
+    # Analyze dependencies in the Jsonnet file
+    jsonnet-deps "$JSONNET_FILE"
 fi
 
 # Check if the Jsonnet source file exists
