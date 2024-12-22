@@ -138,12 +138,18 @@ local bundle = {
     '^com\\.apple\\.Safari$',  // Safari browser
   ],
 
+  // Containers application
+  containers: [
+    '^com\\.docker.docker$',  // Docker container (handles Docker engine and related services)
+  ],
+
   // A combined list of all the bundles
   standard:
     $.hypervisors +
     $.ides +
     $.remoteDesktops +
     $.terminalEmulators +
+    $.containers +
     [],
 };
 
