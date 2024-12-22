@@ -43,6 +43,8 @@ jobs:
           # Install Jsonnet and Jsonnet Lint using Go's package manager
           go install github.com/google/go-jsonnet/cmd/jsonnet@latest  # Install Jsonnet tool
           go install github.com/google/go-jsonnet/cmd/jsonnet-lint@latest  # Install Jsonnet Lint tool
+          go install github.com/google/go-jsonnet/cmd/jsonnetfmt@latest  # Install Jsonnetfmt tool
+          go install github.com/google/go-jsonnet/cmd/jsonnet-deps@latest  # Install Jsonnet-deps tool
 
       # Step 4: Run the build script to generate JSON files from Jsonnet
       - name: Compile Jsonnet files
