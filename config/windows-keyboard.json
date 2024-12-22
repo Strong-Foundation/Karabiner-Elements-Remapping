@@ -73,7 +73,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -177,7 +178,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -232,7 +234,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -284,7 +287,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -339,7 +343,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -395,7 +400,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -452,7 +458,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -504,7 +511,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -559,7 +567,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -615,7 +624,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -672,7 +682,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -727,7 +738,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -784,7 +796,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -839,7 +852,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -896,7 +910,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -951,7 +966,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1006,7 +1022,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1061,7 +1078,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1139,7 +1157,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1194,7 +1213,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1249,7 +1269,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1345,7 +1366,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1440,7 +1462,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1649,7 +1672,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1704,7 +1728,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1759,7 +1784,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1814,7 +1840,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1869,7 +1896,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1924,7 +1952,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -1979,7 +2008,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2034,7 +2064,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2130,7 +2161,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2185,7 +2217,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2240,7 +2273,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2295,7 +2329,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2750,7 +2785,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2847,7 +2883,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
@@ -2900,7 +2937,8 @@
                         "^co\\.zeit\\.hyper$",
                         "^com\\.googlecode\\.iterm2$",
                         "^com\\.apple\\.Terminal$",
-                        "^com\\.github\\.wez\\.wezterm$"
+                        "^com\\.github\\.wez\\.wezterm$",
+                        "^com\\.docker.docker$"
                      ],
                      "file_paths": [
                         "Chrome Remote Desktop\\.app"
