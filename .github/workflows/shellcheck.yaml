@@ -1,4 +1,3 @@
----
 # Workflow definition for ShellCheck linter on shell scripts
 name: ShellCheck
 
