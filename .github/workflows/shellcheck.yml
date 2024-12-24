@@ -1,0 +1,40 @@
+# GitHub Actions workflow for running ShellCheck to lint shell scripts
+name: ShellCheck
+
+# Define the events that trigger this workflow
+on:
+  # Trigger on push events to any branch, but only if .sh files are modified
+  push:
+    branches:
+      - "*"  # Trigger on any push to any branch
+    paths:
+      - "**/*.sh"  # Only trigger if any .sh file is modified
+  pull_request:
+    branches:
+      - "*"  # Trigger on pull request to any branch
+    paths:
+      - "**/*.sh"  # Only trigger if .sh files are modified in the pull request
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+
+# Define the jobs in the workflow
+jobs:
+  # Job for running ShellCheck linting on shell scripts
+  shellcheck:
+    # Name of the job displayed in GitHub Actions
+    name: Run ShellCheck Linter
+
+    # Define the type of runner to execute this job (Ubuntu environment)
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository code to access shell scripts
+      - name: Checkout Code
+        uses: actions/checkout@v3  # Checkout the latest code from the repository
+
+      # Step 2: Run ShellCheck to lint shell scripts
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master  # Use the ShellCheck action for linting shell scripts
+        with:
+          # Specify any additional arguments or options for ShellCheck (optional)
+          args: "--check-sourced --enable=all"  # Example args: check sourced files, enable all checks
