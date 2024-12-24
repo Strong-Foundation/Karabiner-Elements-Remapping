@@ -43,6 +43,12 @@ jobs:
         uses: ibiqlik/action-yamllint@v3
         with: # Provides additional configuration to the yamllint action
           # Lint all YAML files with both '.yaml' and '.yml' extensions in the repository, including subdirectories
-          file_or_dir: "**/*.yaml **/*.yml"
-          # Specifies the output format to be GitHub-friendly annotations for easier viewing in the GitHub UI
+          file_or_dir: "**/*.yaml" # Lint files with the '.yaml' extension in all subdirectories
+          format: "github" # Specifies the output format to be GitHub-friendly annotations for easier viewing in the GitHub UI
+
+      # Lint all .yml files, including files in subdirectories
+      - name: Lint all YML files
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: "**/*.yml" # Lint files with the '.yml' extension in all subdirectories
           format: "github"
