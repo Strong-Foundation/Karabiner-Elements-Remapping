@@ -3,7 +3,7 @@
 name: ShellCheck
 
 # Define the events that will trigger the workflow
-on:
+"on":
   # Trigger the workflow when code is pushed to any branch
   push:
     branches:
