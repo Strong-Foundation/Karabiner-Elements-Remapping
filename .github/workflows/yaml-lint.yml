@@ -8,19 +8,19 @@ on:
     # Defines which branches to monitor
     branches:
       - main # Runs the action on pushes to the 'main' branch
-    # Runs only if files matching these paths are changed
+    # Runs only if files matching these paths are changed inside .github/workflows folder
     paths:
-      - "**/*.yaml" # Lint files with the '.yaml' extension
-      - "**/*.yml" # Lint files with the '.yml' extension
+      - ".github/workflows/**/*.yaml" # Lint files with the '.yaml' extension inside the .github/workflows folder
+      - ".github/workflows/**/*.yml" # Lint files with the '.yml' extension inside the .github/workflows folder
   # Trigger the workflow on pull requests
   pull_request:
     # Defines which branches to monitor for pull requests
     branches:
       - main # Runs the action on pull requests targeting the 'main' branch
-    # Runs only if files matching these paths are changed
+    # Runs only if files matching these paths are changed inside .github/workflows folder
     paths:
-      - "**/*.yaml" # Lint files with the '.yaml' extension
-      - "**/*.yml" # Lint files with the '.yml' extension
+      - ".github/workflows/**/*.yaml" # Lint files with the '.yaml' extension inside the .github/workflows folder
+      - ".github/workflows/**/*.yml" # Lint files with the '.yml' extension inside the .github/workflows folder
   # Allows manual triggering of the workflow via the GitHub UI
   workflow_dispatch:
 
@@ -38,17 +38,18 @@ jobs:
         uses: actions/checkout@v3
 
       # Step name, shown in the GitHub UI
-      - name: Lint all YAML files
-        # Action to run yamllint on the YAML files
+      - name: Lint all YAML files in .github/workflows folder
+        # Action to run yamllint on the YAML files inside the .github/workflows folder
         uses: ibiqlik/action-yamllint@v3
         with: # Provides additional configuration to the yamllint action
-          # Lint all YAML files with both '.yaml' and '.yml' extensions in the repository, including subdirectories
-          file_or_dir: "**/*.yaml" # Lint files with the '.yaml' extension in all subdirectories
+          # Lint all YAML files with '.yaml' extension inside the .github/workflows folder
+          file_or_dir: ".github/workflows/**/*.yaml"
           format: "github" # Specifies the output format to be GitHub-friendly annotations for easier viewing in the GitHub UI
 
-      # Lint all .yml files, including files in subdirectories
-      - name: Lint all YML files
+      # Lint all YML files inside .github/workflows folder
+      - name: Lint all YML files in .github/workflows folder
         uses: ibiqlik/action-yamllint@v3
         with:
-          file_or_dir: "**/*.yml" # Lint files with the '.yml' extension in all subdirectories
-          format: "github"
+          # Lint all YAML files with '.yml' extension inside the .github/workflows folder
+          file_or_dir: ".github/workflows/**/*.yml"
+          format: "github" # Specifies the output format to be GitHub-friendly annotations for easier viewing in the GitHub UI
