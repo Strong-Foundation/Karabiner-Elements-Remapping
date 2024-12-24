@@ -16,7 +16,7 @@ name: ShellCheck
     paths:
       - "**/*.sh" # Only trigger if .sh files are modified in the pull request
   # Allow manual triggering of the workflow from the GitHub UI
-  workflow_dispatch: true # Correctly set as 'true' to indicate manual trigger
+  workflow_dispatch: {}
 
 # Define the jobs that will run in this workflow
 jobs:
