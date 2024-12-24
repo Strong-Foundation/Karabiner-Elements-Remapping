@@ -1,40 +1,46 @@
-# GitHub Actions workflow for running ShellCheck to lint shell scripts
+---
+# Workflow definition for ShellCheck linter on shell scripts
 name: ShellCheck
 
-# Define the events that trigger this workflow
+# Define the events that will trigger the workflow
 on:
-  # Trigger on push events to any branch, but only if .sh files are modified
+  # Trigger the workflow when code is pushed to any branch
   push:
     branches:
-      - "*"  # Trigger on any push to any branch
+      - "*" # Trigger on any push to any branch
     paths:
-      - "**/*.sh"  # Only trigger if any .sh file is modified
+      - "**/*.sh" # Only trigger if any .sh file is modified in the push event
+  # Trigger the workflow when a pull request is made to any branch
   pull_request:
     branches:
-      - "*"  # Trigger on pull request to any branch
+      - "*" # Trigger on pull request to any branch
     paths:
-      - "**/*.sh"  # Only trigger if .sh files are modified in the pull request
-  # Allow manual triggering of the workflow
-  workflow_dispatch:
+      - "**/*.sh" # Only trigger if .sh files are modified in the pull request
+  # Allow manual triggering of the workflow from the GitHub UI
+  workflow_dispatch: {}
 
-# Define the jobs in the workflow
+# Define the jobs that will run in this workflow
 jobs:
-  # Job for running ShellCheck linting on shell scripts
+  # Job definition for running ShellCheck linter
   shellcheck:
-    # Name of the job displayed in GitHub Actions
+    # Name of the job as it will appear in the GitHub Actions UI
     name: Run ShellCheck Linter
 
-    # Define the type of runner to execute this job (Ubuntu environment)
-    runs-on: ubuntu-latest
+    # Specify the environment (runner) to run the job on
+    runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
 
     steps:
-      # Step 1: Checkout the repository code to access shell scripts
+      # Step 1: Checkout the repository code so we can access the shell scripts
       - name: Checkout Code
-        uses: actions/checkout@v3  # Checkout the latest code from the repository
+        uses: actions/checkout@v3 # Use GitHub's checkout action to pull the latest code from the repository
 
-      # Step 2: Run ShellCheck to lint shell scripts
+      # Step 2: Run ShellCheck to lint all shell scripts (.sh files) in the repository
       - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master  # Use the ShellCheck action for linting shell scripts
+        uses: ludeeus/action-shellcheck@master # Use the ShellCheck action from the 'ludeeus' GitHub user to run ShellCheck
+
         with:
-          # Specify any additional arguments or options for ShellCheck (optional)
-          args: "--check-sourced --enable=all"  # Example args: check sourced files, enable all checks
+          # Arguments for ShellCheck
+          args:
+            "--check-sourced --enable=all" # Run ShellCheck with options:
+            # --check-sourced: Checks files that are sourced in the script.
+            # --enable=all: Enables all checks and warnings
