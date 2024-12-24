@@ -2,7 +2,7 @@
 name: YAML Lint
 
 # Defines the events that trigger the workflow
-on:
+"on":
   # Trigger the workflow when code is pushed to the repository
   push:
     # Defines which branches to monitor
