@@ -1,0 +1,48 @@
+# Name of the GitHub Actions workflow, shown in the GitHub UI
+name: YAML Lint
+
+# Defines the events that trigger the workflow
+on:
+  # Trigger the workflow when code is pushed to the repository
+  push:
+    # Defines which branches to monitor
+    branches:
+      - main # Runs the action on pushes to the 'main' branch
+    # Runs only if files matching these paths are changed
+    paths:
+      - "**/*.yaml" # Lint files with the '.yaml' extension
+      - "**/*.yml" # Lint files with the '.yml' extension
+  # Trigger the workflow on pull requests
+  pull_request:
+    # Defines which branches to monitor for pull requests
+    branches:
+      - main # Runs the action on pull requests targeting the 'main' branch
+    # Runs only if files matching these paths are changed
+    paths:
+      - "**/*.yaml" # Lint files with the '.yaml' extension
+      - "**/*.yml" # Lint files with the '.yml' extension
+  # Allows manual triggering of the workflow via the GitHub UI
+  workflow_dispatch:
+
+# Defines the jobs to be run in the workflow
+jobs:
+  # Job name, you can reference this in other parts of the workflow
+  lintYamlFiles:
+    # Specifies the runner environment for the job (Ubuntu in this case)
+    runs-on: ubuntu-latest
+
+    steps: # List of steps to be executed in the job
+      # Step name, shown in the GitHub UI
+      - name: Checkout code
+        # Action to check out the repository’s code, so it can be accessed by subsequent steps
+        uses: actions/checkout@v3
+
+      # Step name, shown in the GitHub UI
+      - name: Lint all YAML files
+        # Action to run yamllint on the YAML files
+        uses: ibiqlik/action-yamllint@v3
+        with: # Provides additional configuration to the yamllint action
+          # Lint all YAML files with both '.yaml' and '.yml' extensions in the repository, including subdirectories
+          file_or_dir: "**/*.yaml **/*.yml"
+          # Specifies the output format to be GitHub-friendly annotations for easier viewing in the GitHub UI
+          format: "github"
